@@ -1,0 +1,30 @@
+.roundButton {
+  background-color: #faebd7; /* Green */
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  color: white;
+  box-shadow: 0 0 10px grey;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background-color: #f0d9bd;
+    box-shadow: 0 0 5 1px #fff, /* inner white */ 0 0 5 2px #faebd7,
+      /* middle magenta */ 0 0 5 3px #e4c8a3; /* outer cyan */
+  }
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 5 1px #fff, /* inner white */ 0 0 5 2px rgb(0, 217, 255),
+      /* middle magenta */ 0 0 5 3px rgb(16, 178, 241); /* outer cyan */
+  }
+
+  &:active {
+    background-color: #e4c8a3;
+    opacity: 85%;
+  }
+}

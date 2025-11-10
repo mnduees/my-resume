@@ -20,8 +20,8 @@ for (const name of icons) {
 type DynamicIconProps = {
   name: IconName;
   className?: string;
-  size: number;
-  color: string;
+  size?: number;
+  color?: string;
   active?: boolean; // optional
 };
 

@@ -1,5 +1,9 @@
-import React from "react";
+import Carousel from "@/app/components/carousel/Carousel";
 
 export default function page() {
-  return <div>page</div>;
+  return (
+    <div>
+      <Carousel />
+    </div>
+  );
 }

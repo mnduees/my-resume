@@ -1,0 +1,44 @@
+.header {
+  color: var(--White-01, #fff);
+  font-size: 4rem;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.paragraph {
+  color: #cbcbcb;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.875rem; /* 187.5% */
+}
+
+.button {
+  display: flex;
+  padding: 0.9375rem 1.875rem;
+  align-items: center;
+  border-radius: 6.25rem;
+  border: 1px solid #eb5757;
+  color: #eb5757;
+  text-align: center;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.button:hover {
+  background-color: #eb5757;
+  color: #fff;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+@media screen and (max-width: 750px) {
+  .header {
+    font-size: 3rem;
+  }
+}

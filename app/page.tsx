@@ -22,8 +22,8 @@ export default function Home() {
 
           {/* centered name + role */}
           <div className="flex flex-col items-center justify-center h-full leading-tight">
-            <h1 className="text-[26px]">Raimundo Estévez</h1>
-            <p className="text-[17px] mt-1">Programmer & Data Engineer</p>
+            <h1>Raimundo Estévez</h1>
+            <p className="mt-1">Programmer & Data Engineer</p>
           </div>
 
           {/* bottom fictional address */}

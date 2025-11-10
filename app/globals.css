@@ -24,3 +24,17 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+h1 {
+  color: black;
+  font-size: 26px;
+  font-weight: 400;
+  line-height: normal;
+}
+
+p {
+  color: black;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+}

@@ -31,7 +31,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen w-screen `}
       >
         <div>
-          <div className="left-[50%] top-[50%] flex items-center justify-center">
+          <div className="left-[50%] top-[50%] flex items-center justify-center ">
             <div className="absolute top-0 inset-x-0 z-30 justify-center">
               <Navbar />
             </div>

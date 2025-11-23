@@ -138,7 +138,7 @@ export default function Navbar() {
             <div
               key={it.name}
               className={cn(
-                "transition-all duration-300 ease-out [will-change:opacity,transform] mt-2",
+                "transition-all duration-300 ease-out [will-change:opacity,transform] mt-2 h-29",
                 openHobby
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 -translate-y-2"

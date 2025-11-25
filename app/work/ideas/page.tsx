@@ -3,17 +3,17 @@
 import { useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Lenis from "lenis";
-import sun1 from "@/public/homepage/computer-sun1.png";
-import sun2 from "@/public/homepage/computer-sun2.png";
-import steam1 from "@/public/homepage/steam_1.png";
-import tibia from "@/public/homepage/tibia.jpeg";
-import cs16 from "@/public/homepage/cs16.jpeg";
-import dota2 from "@/public/homepage/dota2.jpg";
-import overwatch from "@/public/homepage/overwatch.jpg";
-import htmlcss from "@/public/homepage/html-css.png";
-import python from "@/public/homepage/python.png";
-import java from "@/public/homepage/java.png";
-import datatools from "@/public/homepage/data_tools.png";
+const sun1 = "/homepage/computer-sun1.png";
+const sun2 = "/homepage/computer-sun2.png";
+const steam1 = "/homepage/steam_1.png";
+const tibia = "/homepage/tibia.jpeg";
+const cs16 = "/homepage/cs16.jpeg";
+const dota2 = "/homepage/dota2.jpg";
+const overwatch = "/homepage/overwatch.jpg";
+const htmlcss = "/homepage/html-css.png";
+const python = "/homepage/python.png";
+const java = "/homepage/java.png";
+const datatools = "/homepage/data_tools.png";
 import Image from "next/image";
 import styles from "./ideas.module.css";
 

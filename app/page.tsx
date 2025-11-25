@@ -22,13 +22,13 @@ export default function Home() {
 
           {/* centered name + role */}
           <div className="flex flex-col items-center justify-center h-full leading-tight">
-            <h1>Raimundo Estévez</h1>
+            <h1>LOLAZO</h1>
             <p className="mt-1">Programmer & Data Engineer</p>
           </div>
 
           {/* bottom fictional address */}
           <span className="absolute bottom-2 left-1/2 -translate-x-1/2 text-sm">
-            raimundoestevezs@gmail.com
+            lolazo@gmail.com
           </span>
         </div>
       </main>

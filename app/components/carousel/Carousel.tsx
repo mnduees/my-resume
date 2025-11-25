@@ -3,9 +3,9 @@
 import React, { useState } from "react";
 import styles from "./carousel.module.scss";
 import Image from "next/image";
-import project1 from "@/public/projects/project1.png";
-import project2 from "@/public/projects/project2.png";
-import project3 from "@/public/projects/project3.png";
+const project1 = "/projects/project1.png";
+const project2 = "/projects/project2.png";
+const project3 = "/projects/project3.png";
 import DynamicIcon from "../buttons/button-icon/ButtonIcon";
 import { motion, Easing } from "framer-motion";
 

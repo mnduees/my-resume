@@ -3,8 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./ui/main/navbar";
 
-const PAD_T = "pt-[72px]"; // must match NAV_H
-
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],

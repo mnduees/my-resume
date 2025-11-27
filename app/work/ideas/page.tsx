@@ -3,7 +3,6 @@
 import { useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Lenis from "lenis";
-const sun1 = "/homepage/computer-sun1.png";
 const sun2 = "/homepage/computer-sun2.png";
 const steam1 = "/homepage/steam_1.png";
 const tibia = "/homepage/tibia.jpeg";
@@ -16,16 +15,6 @@ const java = "/homepage/java.png";
 const datatools = "/homepage/data_tools.png";
 import Image from "next/image";
 import styles from "./ideas.module.css";
-
-// Individual card animation based on scroll progress
-const createCardVariants = (cardIndex: number) => ({
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
-  },
-});
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);

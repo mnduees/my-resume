@@ -52,6 +52,4 @@ jobs:
           script: |
             cd ~/my-resume
             chmod +x ./deploy-my-resume.sh
-            echo "[DEBUG] PATH is: $PATH"
-            which pnpm || echo "pnpm not found"
             ./deploy-my-resume.sh

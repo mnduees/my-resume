@@ -1,7 +1,11 @@
+#deploy-my-resume.sh
 set -e
 
 echo "[deploy] Pulling latest code..."
 git pull origin main
+
+echo "[deploy] Enabling corepack..."
+corepack enable
 
 echo "[deploy] Installing dependencies..."
 pnpm install --frozen-lockfile

@@ -34,3 +34,22 @@ jobs:
 
       - name: Build
         run: pnpm run build
+
+
+  deploy:
+    needs: build-and-lint
+    # Only deploy on direct pushes to main (i.e., after PR merge)
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: SSH and deploy
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          script: |
+            cd ~/my-resume
+            chmod +x ./deploy-my-resume.sh
+            ./deploy-my-resume.sh

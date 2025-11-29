@@ -7,7 +7,7 @@ const balthazar = Balthazar({
 
 export default function Home() {
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex items-center justify-center height: 50%">
       <main className="flex items-center justify-center bg-[#FAEBD7] w-[362px] h-[202px] border-white rounded-md">
         <div
           className={`${balthazar.className} relative w-[360px] h-[200px] border border-black rounded-md p-4 text-black`}
@@ -28,7 +28,7 @@ export default function Home() {
 
           {/* bottom fictional address */}
           <span className="absolute bottom-2 left-1/2 -translate-x-1/2 text-sm">
-            lolazo@gmail.com
+            xd@gmail.com
           </span>
         </div>
       </main>

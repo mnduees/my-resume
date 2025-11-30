@@ -5,24 +5,24 @@ import ParallaxCarousel from "./components/parallaxCarousel/Carousel";
 export default function Home() {
   const projectSlides = [
     {
-      id: "pipeline-01",
-      title: "Streaming Data Pipeline",
+      id: "fullstack-01",
+      title: "Medical AId",
       description:
-        "Kafka ingestion with Flink processing, writing curated datasets to Iceberg on S3 plus Looker dashboards.",
-      imageSrc: "/projects/project1.png",
-    },
-    {
-      id: "backend-02",
-      title: "API Platform",
-      description:
-        "Fastify + PostgreSQL service with JWT auth, rate limiting, and OpenAPI docs deployed on Fly.io.",
+        "React.js/Node.js app integrating a machine-learning model for symptom diagnosis, including user alerts based on geographic location.",
       imageSrc: "/projects/project2.png",
     },
     {
-      id: "ml-03",
-      title: "ML Monitoring",
+      id: "fullstack-02",
+      title: "Work Order Management Software",
       description:
-        "Evidently-based drift monitoring with Grafana alerts and retraining hooks triggered via Argo Workflows.",
+        "React.js/Node.js application for managing work orders in a dental laboratory.",
+      imageSrc: "/projects/project1.png",
+    },
+    {
+      id: "integration-03",
+      title: "Ecommerce website",
+      description:
+        "React.js/Next.js application developed to gain experience integrating with Transbank, the main payment service provider in Chile.",
       imageSrc: "/projects/project3.png",
     },
   ];
@@ -46,33 +46,21 @@ export default function Home() {
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <a
               href="#projects"
-              className="rounded-full bg-indigo-500 px-4 py-2 text-sm font-medium text-slate-950 hover:bg-indigo-600"
+              className="rounded-full bg-indigo-500 px-4 py-2 text-sm font-medium text-slate-950 transition-colors hover:bg-indigo-600 border hover:border-indigo-400"
             >
               View Projects
             </a>
             <a
+              href="/my/timeline"
+              className="rounded-full bg-indigo-500 px-4 py-2 text-sm font-medium text-slate-950 transition-colors hover:bg-indigo-600 border hover:border-indigo-400"
+            >
+              Experience & Education
+            </a>
+            <a
               href="#contact"
-              className="rounded-full border border-slate-700 px-4 py-2 text-sm font-medium text-slate-100 hover:border-indigo-400"
+              className="rounded-full bg-indigo-500 px-4 py-2 text-sm font-medium text-slate-950 transition-colors hover:bg-indigo-600 border hover:border-indigo-400"
             >
               Contact Me
-            </a>
-          </div>
-          <div className="mt-6 flex items-center gap-4 text-sm text-slate-400">
-            {/* Replace with icons later */}
-            <a
-              href="https://github.com/your-user"
-              className="hover:text-indigo-400"
-            >
-              GitHub
-            </a>
-            <a
-              href="https://linkedin.com/in/your-user"
-              className="hover:text-indigo-400"
-            >
-              LinkedIn
-            </a>
-            <a href="mailto:you@example.com" className="hover:text-indigo-400">
-              Email
             </a>
           </div>
         </section>
@@ -148,58 +136,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Experience */}
-        <section
-          id="experience"
-          className="py-16 sm:py-24 border-t border-slate-800"
-        >
-          <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-            Experience
-          </h2>
-          <div className="mt-8 space-y-8">
-            <div>
-              <div className="flex flex-col justify-between gap-1 sm:flex-row sm:items-baseline">
-                <h3 className="text-base font-semibold">
-                  Role Title – Company Name
-                </h3>
-                <p className="text-xs text-slate-400">2022 – Present</p>
-              </div>
-              <p className="mt-1 text-xs text-slate-400">Location or Remote</p>
-              <ul className="mt-3 space-y-1 text-sm text-slate-300">
-                <li>• Achievement or responsibility with some impact.</li>
-                <li>• Another contribution worth highlighting.</li>
-              </ul>
-            </div>
-
-            {/* More experience blocks */}
-          </div>
-        </section>
-
-        {/* Education */}
-        <section
-          id="education"
-          className="py-16 sm:py-24 border-t border-slate-800"
-        >
-          <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-            Education
-          </h2>
-          <div className="mt-8 space-y-4 text-sm text-slate-300">
-            <div>
-              <p className="font-semibold">
-                Professional Degree / Computer Engineering – Duoc UC
-              </p>
-              <p className="text-xs text-slate-400">2024, Santiago</p>
-            </div>
-            <div>
-              <p className="font-semibold">
-                Technical Degree / Programmer Analyst – Duoc UC
-              </p>
-              <p className="text-xs text-slate-400">2023, Santiago</p>
-            </div>
-            {/* More items or certifications */}
-          </div>
-        </section>
-
         {/* Contact */}
         <section
           id="contact"
@@ -209,8 +145,9 @@ export default function Home() {
             Contact
           </h2>
           <p className="mt-4 max-w-5xl text-sm text-slate-300 sm:text-base">
-            I&apos;m open to work fulltime or freelance as data engineer and
-            java developer. I can also do collaborations just to learn.
+            I&apos;m open to full-time or freelance opportunities as a Data
+            Engineer or Java Developer. I&apos;m also open to collaborations for
+            learning and growth.
           </p>
           <div className="mt-6 space-y-3 text-sm text-slate-300">
             <a

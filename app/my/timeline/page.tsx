@@ -136,7 +136,7 @@ export default function ConnectedSections() {
           scrollTrigger: {
             trigger: card,
             start: isPresent ? "center 75%" : "center center",
-            end: isPresent ? "center 70%" : "center 48%",
+            end: isPresent ? "center 80%" : "center 48%",
             scrub: true,
           },
         }
@@ -222,7 +222,7 @@ export default function ConnectedSections() {
             />
           </svg>
           {/* Content blocks to connect */}
-          <div className="relative space-y-20 md:space-y-28 lg:space-y-32">
+          <div className="relative space-y-20 md:space-y-28 lg:space-y-32 mb-20">
             {/* Title */}
             <div className="mx-auto mt-6 mb-16 flex w-full max-w-sm items-center justify-center">
               <h3
@@ -388,7 +388,7 @@ export default function ConnectedSections() {
           {/* Present Section */}
           <div
             ref={presentRef}
-            className="mx-auto mt-20 flex max-w-xl flex-col items-center gap-6 rounded-2xl border border-white/10 bg-slate-900/50 px-8 py-15 text-center opacity-0 backdrop-blur"
+            className="mx-auto mt-15 flex max-w-xl flex-col items-center gap-6 rounded-2xl border border-white/10 bg-slate-900/50 px-8 py-15 text-center opacity-0 backdrop-blur"
           >
             <h3
               className="text-2xl font-semibold tracking-tight sm:text-3xl mb-10"
@@ -398,10 +398,35 @@ export default function ConnectedSections() {
             >
               Present
             </h3>
-            <div className="relative flex h-40 w-40 items-center justify-center">
-              <div className="absolute h-full w-full rotate-45 rounded-lg border-4 border-amber-500 bg-amber-400 shadow-xl shadow-amber-500/20" />
-              <div className="relative z-10 px-6 text-center text-sm font-semibold text-slate-900 sm:text-base">
-                Building my next chapter
+            <div className="relative flex h-40 w-40 items-center justify-center sm:h-46 sm:w-46">
+              <div className="absolute inset-0 rotate-45 rounded-xl bg-gradient-to-br from-amber-400 via-amber-400 to-amber-500 shadow-[0_5px_15px_rgba(251,191,36,0.35)]" />
+              <div className="absolute inset-2 rotate-45 rounded-lg border border-black shadow-inner shadow-amber-800/40" />
+              <div className="relative z-10 flex flex-col items-center gap-2 px-6 text-center text-slate-900">
+                <svg
+                  className="h-10 w-10 text-amber-800"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 3 3 19h18L12 3Z"
+                    stroke="currentColor"
+                    strokeWidth="1.6"
+                    fill="currentColor"
+                    fillOpacity="0.12"
+                  />
+                  <path
+                    d="M12 9.5v4.5m0 2.5h.01"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                <div className="text-sm font-semibold leading-tight sm:text-base">
+                  <div>Building my next</div>
+                  <div>chapter</div>
+                </div>
               </div>
             </div>
           </div>

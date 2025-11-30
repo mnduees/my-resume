@@ -31,7 +31,7 @@ export default function Home() {
     <div className="min-h-screen bg-slate-950 text-slate-100">
       <main className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         {/* Hero */}
-        <section id="hero" className="pt-24 pb-8">
+        <section id="hero" className="scroll-mt-28 pt-24 pb-8">
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-indigo-400">
             Data Engineer & Backend Developer
           </p>
@@ -68,7 +68,7 @@ export default function Home() {
         {/* Skills */}
         <section
           id="skills"
-          className="py-16 sm:py-8 border-t border-slate-800"
+          className="scroll-mt-10 py-16 sm:py-8 border-t border-slate-800"
         >
           <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
             Skills
@@ -126,7 +126,7 @@ export default function Home() {
         {/* Projects */}
         <section
           id="projects"
-          className="py-16 sm:py-8 border-t border-slate-800"
+          className="scroll-mt-10 py-16 sm:py-8 border-t border-slate-800"
         >
           <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
             Projects
@@ -139,7 +139,7 @@ export default function Home() {
         {/* Contact */}
         <section
           id="contact"
-          className="py-16 sm:py-24 border-t border-slate-800"
+          className="scroll-mt-10 py-16 sm:py-24 border-t border-slate-800"
         >
           <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
             Contact

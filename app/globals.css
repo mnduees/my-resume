@@ -26,14 +26,14 @@ body {
 }
 
 h1 {
-  color: black;
+  color: rgb(255, 255, 255);
   font-size: 26px;
   font-weight: 400;
   line-height: normal;
 }
 
 p {
-  color: black;
+  color: rgb(255, 255, 255);
   font-size: 17px;
   font-style: normal;
   font-weight: 400;

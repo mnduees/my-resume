@@ -243,7 +243,7 @@ export default function ConnectedSections() {
                 ref={(el) => {
                   blocksRef.current[0] = el;
                 }}
-                className="order-2 md:order-1 relative z-10 min-w-md max-w-xl rounded-2xl bg-slate-900/70 p-10 backdrop-blur"
+                className="order-2 md:order-1 relative z-10 max-w-xl rounded-2xl bg-slate-900/70 p-10 backdrop-blur"
               >
                 <h2 className="text-xl font-semibold">
                   Started community college education

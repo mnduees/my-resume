@@ -1,5 +1,31 @@
 // app/page.tsx
+import ParallaxCarousel from "./components/parallaxCarousel/Carousel";
+
 export default function Home() {
+  const projectSlides = [
+    {
+      id: "pipeline-01",
+      title: "Streaming Data Pipeline",
+      description:
+        "Kafka ingestion with Flink processing, writing curated datasets to Iceberg on S3 plus Looker dashboards.",
+      imageSrc: "/projects/project1.png",
+    },
+    {
+      id: "backend-02",
+      title: "API Platform",
+      description:
+        "Fastify + PostgreSQL service with JWT auth, rate limiting, and OpenAPI docs deployed on Fly.io.",
+      imageSrc: "/projects/project2.png",
+    },
+    {
+      id: "ml-03",
+      title: "ML Monitoring",
+      description:
+        "Evidently-based drift monitoring with Grafana alerts and retraining hooks triggered via Argo Workflows.",
+      imageSrc: "/projects/project3.png",
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
       <main className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
@@ -115,33 +141,8 @@ export default function Home() {
           <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
             Projects
           </h2>
-          <div className="mt-8 grid gap-6 md:grid-cols-2">
-            <article className="rounded-xl border border-slate-800 bg-slate-900/50 p-6">
-              <h3 className="text-lg font-semibold">Project Name</h3>
-              <p className="mt-2 text-sm text-slate-300">
-                Short description of the project, what it does, and why it
-                matters.
-              </p>
-              <p className="mt-2 text-xs text-slate-400">
-                Tech stack: Next.js, Tailwind, PostgreSQL
-              </p>
-              <div className="mt-4 flex gap-3 text-xs">
-                <a
-                  href="#"
-                  className="font-medium text-indigo-400 hover:text-indigo-300"
-                >
-                  View code
-                </a>
-                <a
-                  href="#"
-                  className="font-medium text-indigo-400 hover:text-indigo-300"
-                >
-                  Live demo
-                </a>
-              </div>
-            </article>
-
-            {/* Repeat cards for more projects */}
+          <div className="mt-10">
+            <ParallaxCarousel slides={projectSlides} />
           </div>
         </section>
 
@@ -182,8 +183,16 @@ export default function Home() {
           </h2>
           <div className="mt-8 space-y-4 text-sm text-slate-300">
             <div>
-              <p className="font-semibold">Degree / Diploma – Institution</p>
-              <p className="text-xs text-slate-400">Years, Location</p>
+              <p className="font-semibold">
+                Professional Degree / Computer Engineering – Duoc UC
+              </p>
+              <p className="text-xs text-slate-400">2024, Santiago</p>
+            </div>
+            <div>
+              <p className="font-semibold">
+                Technical Degree / Programmer Analyst – Duoc UC
+              </p>
+              <p className="text-xs text-slate-400">2023, Santiago</p>
             </div>
             {/* More items or certifications */}
           </div>
@@ -198,26 +207,26 @@ export default function Home() {
             Contact
           </h2>
           <p className="mt-4 max-w-xl text-sm text-slate-300 sm:text-base">
-            One or two lines about what you are open to (roles, freelance,
-            collaborations).
+            I&apos;m open to work fulltime or freelance as data engineer and
+            java developer. I can also do collaborations just to learn.
           </p>
           <div className="mt-6 space-y-2 text-sm text-slate-300">
             <p>
               Email:{" "}
               <a
-                href="mailto:you@example.com"
+                href="mailto:raimundoestevezs@gmail.com"
                 className="text-indigo-400 hover:text-indigo-300"
               >
-                you@example.com
+                raimundoestevezs@gmail.com
               </a>
             </p>
             <p>
               LinkedIn:{" "}
               <a
-                href="https://linkedin.com/in/your-user"
+                href="hhttps://www.linkedin.com/in/raimundo-estevez/"
                 className="text-indigo-400 hover:text-indigo-300"
               >
-                /in/your-user
+                /in/raimundo-estevez/
               </a>
             </p>
           </div>

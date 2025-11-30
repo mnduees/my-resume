@@ -15,12 +15,11 @@ export default function Navbar2({
   brandName = "Raimundo Estévez",
   cvUrl = "/cv.pdf",
   navLinks = [
-    { label: "About", href: "#about" },
-    { label: "Skills", href: "#skills" },
-    { label: "Projects", href: "#projects" },
-    { label: "Experience", href: "#experience" },
-    { label: "Education", href: "#education" },
-    { label: "Contact", href: "#contact" },
+    { label: "About", href: "/#about" },
+    { label: "Skills", href: "/#skills" },
+    { label: "Projects", href: "/#projects" },
+    { label: "Experience & Education", href: "/my/timeline" },
+    { label: "Contact", href: "/#contact" },
   ],
 }: NavbarProps = {}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -36,9 +35,12 @@ export default function Navbar2({
   return (
     <header className="sticky top-0 z-50 border-b border-slate-800 bg-slate-950/80 backdrop-blur">
       <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
-        <div className="text-sm font-semibold tracking-tight sm:text-base">
+        <a
+          className="text-sm font-semibold tracking-tight sm:text-base"
+          href={"/"}
+        >
           {brandName}
-        </div>
+        </a>
 
         {/* Desktop Navigation */}
         <nav className="hidden items-center gap-4 text-xs sm:text-sm md:flex">

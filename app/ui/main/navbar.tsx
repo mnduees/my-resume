@@ -28,9 +28,9 @@ export default function Navbar() {
   };
 
   const hobbyItems = [
-    { name: "plane" as const, href: "/personal/trips" },
-    { name: "soup" as const, href: "/personal/foods" },
-    { name: "file-headphone" as const, href: "/personal/music" },
+    { name: "plane" as const, href: "/my/timeline" },
+    { name: "soup" as const, href: "/my/timeline" },
+    { name: "file-headphone" as const, href: "/my/timeline" },
   ];
 
   const workItems = [

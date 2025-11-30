@@ -1,12 +1,14 @@
 "use client";
 
 import { useLayoutEffect, useRef } from "react";
+import gsap from "gsap";
 
 export default function ConnectedSections() {
   const containerRef = useRef<HTMLDivElement>(null);
   const svgRef = useRef<SVGSVGElement>(null);
   const pathRef = useRef<SVGPathElement>(null);
   const blocksRef = useRef<(HTMLDivElement | null)[]>([]);
+  const hasAnimatedRef = useRef(false);
 
   useLayoutEffect(() => {
     const updatePath = () => {
@@ -53,6 +55,20 @@ export default function ConnectedSections() {
       };
 
       path.setAttribute("d", buildSmoothPath(points));
+
+      if (!hasAnimatedRef.current) {
+        const length = path.getTotalLength();
+        if (length > 0) {
+          path.style.strokeDasharray = `${length}`;
+          path.style.strokeDashoffset = `${length}`;
+          gsap.to(path, {
+            strokeDashoffset: 0,
+            duration: 2.5,
+            ease: "power2.inOut",
+          });
+          hasAnimatedRef.current = true;
+        }
+      }
     };
 
     updatePath();
@@ -61,7 +77,7 @@ export default function ConnectedSections() {
   }, []);
 
   return (
-    <section className="relative min-h-[180vh] bg-slate-950 text-white">
+    <section className="relative min-h-[120vh] bg-slate-950 text-white">
       {/* Parallax / line container */}
       <div
         ref={containerRef}
@@ -85,7 +101,7 @@ export default function ConnectedSections() {
         {/* Content blocks to connect */}
         <div className="relative space-y-20 md:space-y-28 lg:space-y-32">
           {/* Section A - date left */}
-          <div className="relative flex flex-col items-start gap-4 md:flex-row md:items-center md:gap-8 md:justify-start">
+          <div className="relative flex flex-col items-center gap-4 md:flex-row md:items-center md:gap-8 md:justify-start">
             <div
               ref={(el) => {
                 blocksRef.current[0] = el;
@@ -103,7 +119,7 @@ export default function ConnectedSections() {
           </div>
 
           {/* Section B - date right */}
-          <div className="relative flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-end md:gap-8">
+          <div className="relative flex flex-col items-center gap-4 md:flex-row md:items-center md:justify-end md:gap-8">
             <span className="order-1 md:order-1 rounded-full border border-white/10 bg-white/10 px-4 py-2 text-sm font-semibold text-slate-200 shadow-sm backdrop-blur">
               July 2043
             </span>
@@ -121,7 +137,7 @@ export default function ConnectedSections() {
           </div>
 
           {/* Section C - date left */}
-          <div className="relative flex flex-col items-start gap-4 md:flex-row md:items-center md:gap-8 md:justify-start">
+          <div className="relative flex flex-col items-center gap-4 md:flex-row md:items-center md:gap-8 md:justify-start">
             <div
               ref={(el) => {
                 blocksRef.current[2] = el;
@@ -140,7 +156,7 @@ export default function ConnectedSections() {
           </div>
 
           {/* Section D - date right */}
-          <div className="relative flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-end md:gap-8">
+          <div className="relative flex flex-col items-center gap-4 md:flex-row md:items-center md:justify-end md:gap-8">
             <span className="order-1 md:order-1 rounded-full border border-white/10 bg-white/10 px-4 py-2 text-sm font-semibold text-slate-200 shadow-sm backdrop-blur">
               October 2046
             </span>
@@ -155,6 +171,25 @@ export default function ConnectedSections() {
                 Fourth block, continuing the pattern, connected by the line.
               </p>
             </div>
+          </div>
+
+          {/* Section C - date left */}
+          <div className="relative flex flex-col items-center gap-4 md:flex-row md:items-center md:gap-8 md:justify-start">
+            <div
+              ref={(el) => {
+                blocksRef.current[4] = el;
+              }}
+              className="order-2 md:order-1  relative z-10 max-w-xl rounded-2xl bg-slate-900/70 p-10 backdrop-blur"
+            >
+              <h2 className="text-xl font-semibold">Section C</h2>
+              <p className="text-sm text-slate-300">
+                Third block, following the design pattern, connected by the
+                line.
+              </p>
+            </div>
+            <span className="order-1 md:order-2  rounded-full border border-white/10 bg-white/10 px-4 py-2 text-sm font-semibold text-slate-200 shadow-sm backdrop-blur">
+              January 2045
+            </span>
           </div>
         </div>
       </div>

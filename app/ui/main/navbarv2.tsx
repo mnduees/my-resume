@@ -13,9 +13,9 @@ interface NavbarProps {
 
 export default function Navbar2({
   brandName = "Raimundo Estévez",
-  cvUrl = "/cv.pdf",
+  cvUrl = "/homepage/raimundo_estevez.pdf",
   navLinks = [
-    { label: "About", href: "/#about" },
+    { label: "About", href: "/" },
     { label: "Skills", href: "/#skills" },
     { label: "Projects", href: "/#projects" },
     { label: "Experience & Education", href: "/my/timeline" },

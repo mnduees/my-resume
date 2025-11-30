@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import type React from "react";
+import { useEffect, useRef, useState } from "react";
 
 type Slide = {
   id: string;
@@ -20,6 +21,12 @@ export default function ParallaxCarousel({ slides }: Props) {
   const slideRefs = useRef<(HTMLDivElement | null)[]>([]);
   const hasMounted = useRef(false);
   const prevIndexRef = useRef(0);
+  const dragState = useRef({
+    pointerId: null as number | null,
+    startX: 0,
+    startY: 0,
+    isDragging: false,
+  });
 
   // Initialize slide stacking and opacity
   useEffect(() => {
@@ -106,11 +113,66 @@ export default function ParallaxCarousel({ slides }: Props) {
         (idx - 1 + Math.max(slides.length, 1)) % Math.max(slides.length, 1)
     );
 
+  const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
+    dragState.current = {
+      pointerId: event.pointerId,
+      startX: event.clientX,
+      startY: event.clientY,
+      isDragging: false,
+    };
+    event.currentTarget.setPointerCapture?.(event.pointerId);
+  };
+
+  const handlePointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
+    const state = dragState.current;
+    if (state.pointerId !== event.pointerId) return;
+
+    if (!state.isDragging) {
+      const deltaX = event.clientX - state.startX;
+      const deltaY = event.clientY - state.startY;
+      if (Math.abs(deltaX) > 8 && Math.abs(deltaX) > Math.abs(deltaY)) {
+        state.isDragging = true;
+      }
+    }
+
+    if (state.isDragging) {
+      event.preventDefault();
+    }
+  };
+
+  const handlePointerEnd = (event: React.PointerEvent<HTMLDivElement>) => {
+    const state = dragState.current;
+    if (state.pointerId !== event.pointerId) return;
+
+    const deltaX = event.clientX - state.startX;
+    if (Math.abs(deltaX) > 45) {
+      if (deltaX > 0) {
+        handlePrev();
+      } else {
+        handleNext();
+      }
+    }
+
+    dragState.current = {
+      pointerId: null,
+      startX: 0,
+      startY: 0,
+      isDragging: false,
+    };
+    event.currentTarget.releasePointerCapture?.(event.pointerId);
+  };
+
   if (!slides.length) return null;
 
   return (
     <div className="relative w-full overflow-hidden rounded-3xl bg-slate-900/60 p-6 shadow-xl backdrop-blur">
-      <div className="relative h-[420px] w-full sm:h-[520px]">
+      <div
+        className="relative h-[440px] w-full min-[24rem]:h-[560px] sm:h-[480px]"
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerEnd}
+        onPointerCancel={handlePointerEnd}
+      >
         {slides.map((slide, idx) => (
           <div
             key={slide.id}
@@ -132,7 +194,7 @@ export default function ParallaxCarousel({ slides }: Props) {
             </div>
             <div
               data-image
-              className="relative h-56 w-full overflow-hidden rounded-2xl border border-white/10 bg-slate-950/40 shadow-lg sm:h-72"
+              className="relative h-48 w-full overflow-hidden rounded-2xl border border-white/10 bg-slate-950/40 shadow-lg sm:h-72 hidden min-[24rem]:block"
             >
               <Image
                 src={slide.imageSrc}

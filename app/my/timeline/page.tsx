@@ -3,6 +3,7 @@
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+const startrails = "/homepage/star_trails.jpg";
 
 export default function ConnectedSections() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -12,6 +13,7 @@ export default function ConnectedSections() {
   const presentRef = useRef<HTMLDivElement>(null);
   const pathScrollRef = useRef<ScrollTrigger | null>(null);
   const pathTweenRef = useRef<gsap.core.Tween | null>(null);
+  const highlightTweensRef = useRef<gsap.core.Tween[]>([]);
 
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -84,7 +86,7 @@ export default function ConnectedSections() {
               start: "top center",
               endTrigger: present,
               end: "top center",
-              scrub: 3,
+              scrub: 1,
             },
           }
         );
@@ -98,6 +100,56 @@ export default function ConnectedSections() {
       window.removeEventListener("resize", updatePath);
       pathTweenRef.current?.kill();
       pathScrollRef.current?.kill();
+    };
+  }, []);
+
+  useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    highlightTweensRef.current.forEach((tween) => tween.kill());
+    highlightTweensRef.current = [];
+
+    const cards = blocksRef.current
+      .slice(0, 7)
+      .filter(Boolean) as HTMLDivElement[];
+    if (presentRef.current) {
+      cards.push(presentRef.current);
+    }
+
+    cards.forEach((card, idx) => {
+      const isPresent = idx === cards.length - 1;
+      const tween = gsap.fromTo(
+        card,
+        {
+          scale: 1,
+          boxShadow: "0 0 0 rgba(0,0,0,0)",
+          backgroundColor: "rgba(15,23,42,0.7)",
+          borderColor: "rgba(255,255,255,0.1)",
+        },
+        {
+          scale: isPresent ? 1.05 : 1.035,
+          boxShadow: isPresent
+            ? "0 0 30px rgba(109, 193, 134, 0.35)"
+            : "0 0 24px rgba(109, 193, 134, 0.35)",
+          backgroundColor: "rgba(15,23,42,0.7)",
+          borderColor: "rgba(255, 255, 255, 0.42)",
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: card,
+            start: isPresent ? "center 75%" : "center center",
+            end: isPresent ? "center 70%" : "center 48%",
+            scrub: true,
+          },
+        }
+      );
+      highlightTweensRef.current.push(tween);
+    });
+
+    return () => {
+      highlightTweensRef.current.forEach((tween) => {
+        tween.scrollTrigger?.kill();
+        tween.kill();
+      });
+      highlightTweensRef.current = [];
     };
   }, []);
 
@@ -172,33 +224,44 @@ export default function ConnectedSections() {
           {/* Content blocks to connect */}
           <div className="relative space-y-20 md:space-y-28 lg:space-y-32">
             {/* Title */}
-            <div className="relative mb-8 flex flex-col items-center justify-center text-center">
-              <h3 className="mb-6 text-3xl font-semibold tracking-tight sm:text-4xl">
-                My timeline
+            <div className="mx-auto mt-6 mb-16 flex w-full max-w-sm items-center justify-center">
+              <h3
+                className="mb-6 w-full rounded-xl border border-white/20 px-10 py-20 text-center text-3xl font-semibold tracking-tight text-white shadow-xl shadow-slate-900/50 backdrop-blur sm:text-4xl"
+                style={{
+                  backgroundImage: `linear-gradient(120deg, rgba(15,23,42,0.75), rgba(15,23,42,0.55)), url(${startrails})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+              >
+                My journey so far.
               </h3>
             </div>
+
             {/* Section A - date left */}
             <div className="relative flex flex-col items-center gap-4 md:flex-row md:items-center md:gap-8 md:justify-start">
               <div
                 ref={(el) => {
                   blocksRef.current[0] = el;
                 }}
-                className="order-2 md:order-1 relative z-10 max-w-xl rounded-2xl bg-slate-900/70 p-10 backdrop-blur"
+                className="order-2 md:order-1 relative z-10 min-w-md max-w-xl rounded-2xl bg-slate-900/70 p-10 backdrop-blur"
               >
-                <h2 className="text-xl font-semibold">Section A</h2>
+                <h2 className="text-xl font-semibold">
+                  Started community college education
+                </h2>
                 <p className="text-sm text-slate-300">
-                  First block you want to connect with the line.
+                  Enrolled in Computer Science, where I wrote my first Python
+                  scripts and learned the fundamentals.
                 </p>
               </div>
               <span className="order-1 md:order-2 rounded-full border border-white/10 bg-white/10 px-4 py-2 text-sm font-semibold text-slate-200 shadow-sm backdrop-blur">
-                March 2042
+                March 2019
               </span>
             </div>
 
             {/* Section B - date right */}
             <div className="relative flex flex-col items-center gap-4 md:flex-row md:items-center md:justify-end md:gap-8">
               <span className="order-1 md:order-1 rounded-full border border-white/10 bg-white/10 px-4 py-2 text-sm font-semibold text-slate-200 shadow-sm backdrop-blur">
-                July 2043
+                January 2023
               </span>
               <div
                 ref={(el) => {
@@ -206,9 +269,12 @@ export default function ConnectedSections() {
                 }}
                 className="order-2 md:order-2 relative z-10 max-w-xl rounded-2xl bg-slate-900/70 p-10 backdrop-blur"
               >
-                <h2 className="text-xl font-semibold">Section B</h2>
+                <h2 className="text-xl font-semibold">
+                  Internship at Agromatch
+                </h2>
                 <p className="text-sm text-slate-300">
-                  Second block connected with a parallax-animated line.
+                  My first real-world IT experience as a Web Developer, working
+                  with cloud tools and integrating APIs.
                 </p>
               </div>
             </div>
@@ -221,21 +287,22 @@ export default function ConnectedSections() {
                 }}
                 className="order-2 md:order-1  relative z-10 max-w-xl rounded-2xl bg-slate-900/70 p-10 backdrop-blur"
               >
-                <h2 className="text-xl font-semibold">Section C</h2>
+                <h2 className="text-xl font-semibold">Technical Degree</h2>
                 <p className="text-sm text-slate-300">
-                  Third block, following the design pattern, connected by the
-                  line.
+                  Completed a Technical Degree as a Programmer Analyst,
+                  deepening my knowledge in Java, JavaScript, Python, API
+                  development, and frameworks such as Spring Boot and Node.js.
                 </p>
               </div>
               <span className="order-1 md:order-2  rounded-full border border-white/10 bg-white/10 px-4 py-2 text-sm font-semibold text-slate-200 shadow-sm backdrop-blur">
-                January 2045
+                July 2023
               </span>
             </div>
 
             {/* Section D - date right */}
             <div className="relative flex flex-col items-center gap-4 md:flex-row md:items-center md:justify-end md:gap-8">
               <span className="order-1 md:order-1 rounded-full border border-white/10 bg-white/10 px-4 py-2 text-sm font-semibold text-slate-200 shadow-sm backdrop-blur">
-                October 2046
+                August 2023
               </span>
               <div
                 ref={(el) => {
@@ -243,9 +310,12 @@ export default function ConnectedSections() {
                 }}
                 className="order-2 md:order-2 relative z-10 max-w-xl rounded-2xl bg-slate-900/70 p-10 backdrop-blur"
               >
-                <h2 className="text-xl font-semibold">Section D</h2>
+                <h2 className="text-xl font-semibold">
+                  Full-Time Position at Telefónica
+                </h2>
                 <p className="text-sm text-slate-300">
-                  Fourth block, continuing the pattern, connected by the line.
+                  Joined as a Customer Retention Data Analyst; learned about of
+                  customer-service operations and developed strong soft skills.
                 </p>
               </div>
             </div>
@@ -258,21 +328,22 @@ export default function ConnectedSections() {
                 }}
                 className="order-2 md:order-1  relative z-10 max-w-xl rounded-2xl bg-slate-900/70 p-10 backdrop-blur"
               >
-                <h2 className="text-xl font-semibold">Section E</h2>
+                <h2 className="text-xl font-semibold">Professional Degree</h2>
                 <p className="text-sm text-slate-300">
-                  Fifth block, following the design pattern, connected by the
-                  line.
+                  I obtained a Professional Degree in Computer Engineering; at
+                  this stage I gained knowledge in project management, work
+                  frameworks, process design, and machine learning.
                 </p>
               </div>
               <span className="order-1 md:order-2  rounded-full border border-white/10 bg-white/10 px-4 py-2 text-sm font-semibold text-slate-200 shadow-sm backdrop-blur">
-                January 2045
+                December 2024
               </span>
             </div>
 
             {/* Section F - date right */}
             <div className="relative flex flex-col items-center gap-4 md:flex-row md:items-center md:justify-end md:gap-8">
               <span className="order-1 md:order-1 rounded-full border border-white/10 bg-white/10 px-4 py-2 text-sm font-semibold text-slate-200 shadow-sm backdrop-blur">
-                October 2046
+                April 2025
               </span>
               <div
                 ref={(el) => {
@@ -280,11 +351,37 @@ export default function ConnectedSections() {
                 }}
                 className="order-2 md:order-2 relative z-10 max-w-xl rounded-2xl bg-slate-900/70 p-10 backdrop-blur"
               >
-                <h2 className="text-xl font-semibold">Section D</h2>
+                <h2 className="text-xl font-semibold">
+                  Promotion at Telefónica
+                </h2>
                 <p className="text-sm text-slate-300">
-                  Fourth block, continuing the pattern, connected by the line.
+                  Promoted to a Marketing Data Analyst role, where I learned how
+                  marketing works and the importance of data-driven decisions in
+                  business.
                 </p>
               </div>
+            </div>
+
+            {/* Section G - date left */}
+            <div className="relative flex flex-col items-center gap-4 md:flex-row md:items-center md:gap-8 md:justify-start">
+              <div
+                ref={(el) => {
+                  blocksRef.current[6] = el;
+                }}
+                className="order-2 md:order-1  relative z-10 max-w-xl rounded-2xl bg-slate-900/70 p-10 backdrop-blur"
+              >
+                <h2 className="text-xl font-semibold">
+                  Full-time Position at Ceptinel
+                </h2>
+                <p className="text-sm text-slate-300">
+                  Started working as a Python Developer; this is my current
+                  role, where I mainly build data pipelines to solve business
+                  problems.
+                </p>
+              </div>
+              <span className="order-1 md:order-2  rounded-full border border-white/10 bg-white/10 px-4 py-2 text-sm font-semibold text-slate-200 shadow-sm backdrop-blur">
+                October 2025
+              </span>
             </div>
           </div>
 
@@ -296,7 +393,7 @@ export default function ConnectedSections() {
             <h3
               className="text-2xl font-semibold tracking-tight sm:text-3xl mb-10"
               ref={(el) => {
-                blocksRef.current[6] = el;
+                blocksRef.current[7] = el;
               }}
             >
               Present

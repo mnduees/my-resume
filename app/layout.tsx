@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "LOLAZO",
+  title: "Raimundo Estévez",
   description: "Información personal",
 };
 

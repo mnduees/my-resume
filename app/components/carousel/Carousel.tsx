@@ -114,6 +114,8 @@ const Carousel = () => {
             className={styles.first}
             alt="first image"
             src={project1}
+            width={600}
+            height={600}
           ></Image>
         </motion.div>
         <motion.div
@@ -133,6 +135,8 @@ const Carousel = () => {
             className={styles.second}
             alt="second image"
             src={project2}
+            width={600}
+            height={600}
           ></Image>
         </motion.div>
         <motion.div
@@ -157,6 +161,8 @@ const Carousel = () => {
             className={styles.third}
             alt="third image"
             src={project3}
+            width={600}
+            height={600}
           ></Image>
         </motion.div>
         <div className={styles.controls}>

@@ -34,10 +34,10 @@ export default function Home() {
   });
 
   // Parallax transforms for section1 background (slower movement)
-  const bg1Y = useTransform(section1ScrollYProgress, [0, 1], [0, 200]);
+  const bg1Y = useTransform(section1ScrollYProgress, [0, 1], [0, 0]);
 
   // Parallax transforms for section2 background (slower movement)
-  const bg2Y = useTransform(section2ScrollYProgress, [0, 1], [0, 200]);
+  const bg2Y = useTransform(section2ScrollYProgress, [0, 1], [0, 0]);
 
   // Card visibility helpers for section1
   // Divide scroll progress into 4 segments for 4 cards
